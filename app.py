@@ -66,7 +66,11 @@ llm = Groq(
 )
 
 
-embed_model = HuggingFaceEmbedding(model_name=EMBED_MODEL)
+embed_model = HuggingFaceEmbedding(
+    model_name=EMBED_MODEL,
+    device="cpu"
+)
+
 
 Settings.llm = llm
 Settings.embed_model = embed_model
