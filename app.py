@@ -157,7 +157,7 @@ if user_input := st.chat_input("Ask Baldur about your health..."):
 
                     if hasattr(response, "source_nodes") and response.source_nodes:
                         for node in response.source_nodes:
-                            if node.score and node.score > 0.7:
+                            if node.score and node.score > 0.45:
                                 use_rag = True
                                 break
 
