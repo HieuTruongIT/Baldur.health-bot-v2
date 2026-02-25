@@ -3,11 +3,11 @@ import os
 import chromadb
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings, StorageContext
 from llama_index.vector_stores.chroma import ChromaVectorStore
-from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.embeddings.fastembed import FastEmbedEmbedding
 from llama_index.llms.groq import Groq
 
-embed_model = OpenAIEmbedding(
-    model="text-embedding-3-small"
+embed_model = FastEmbedEmbedding(
+    model_name="BAAI/bge-small-en-v1.5"
 )
 
 st.set_page_config(
@@ -58,15 +58,30 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-MODEL_OPTION = st.radio(
+MODEL_DISPLAY = st.radio(
     "",
     [
-        "llama-3.1-8b-instant",
+        "meta/llama-3.1-8b-instant",
         "openai/gpt-oss-120b",
         "qwen/qwen3-32b"
     ],
     horizontal=True
 )
+
+MODEL_MAP = {
+    "meta/llama-3.1-8b-instant": "llama-3.1-8b-instant",
+    "openai/gpt-oss-120b": "llama-3.3-70b-versatile",
+    "qwen/qwen3-32b": "qwen/qwen3-32b"
+}
+
+if "current_model" not in st.session_state:
+    st.session_state.current_model = MODEL_DISPLAY
+
+if st.session_state.current_model != MODEL_DISPLAY:
+    st.session_state.messages = []
+    st.session_state.current_model = MODEL_DISPLAY
+
+MODEL_OPTION = MODEL_MAP[MODEL_DISPLAY]
 
 st.divider()
 
