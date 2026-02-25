@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+storage/
+data/*.pdf   # nếu bạn không muốn push tài liệu nhạy cảm lên GitHub
+.env
+.streamlit/secrets.toml
