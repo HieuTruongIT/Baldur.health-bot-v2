@@ -1,26 +1,10 @@
-<<<<<<< HEAD
 streamlit
-llama-index
-llama-index-llms-groq
-llama-index-embeddings-fastembed
 chromadb
-
-torch==2.2.2
-transformers==4.41.2
-sentence-transformers==2.7.0
-=======
-streamlit==1.35.0
-
-llama-index==0.10.38
-llama-index-llms-groq==0.1.4
-llama-index-embeddings-huggingface==0.2.0
-
-chromadb==0.5.0
-
-torch==2.2.2
-transformers==4.41.2
-sentence-transformers==2.7.0
-
-huggingface-hub==0.23.0
-pydantic==1.10.13
->>>>>>> eda6f8aba95250e34a04f6c86964a25507d184c2
+llama-index
+llama-index-vector-stores-chroma
+llama-index-embeddings-fastembed
+llama-index-llms-groq
+fastembed
+pandas
+numpy
+python-dotenv
