@@ -8,3 +8,4 @@ fastembed
 pandas
 numpy
 python-dotenv
+streamlit-mic-recorder

@@ -442,7 +442,33 @@ index = get_index()
 
 if index:
     memory = ChatMemoryBuffer.from_defaults(token_limit=2000)
-    chat_engine = index.as_chat_engine(chat_mode="context",memory=memory,similarity_top_k=4,system_prompt="You are Baldur.health AI")
+    # chat_engine = index.as_chat_engine(chat_mode="context",memory=memory,similarity_top_k=4,system_prompt="You are Baldur.health AI")
+    chat_engine = index.as_chat_engine(
+    chat_mode="context",
+    memory=memory,
+    similarity_top_k=6,
+    system_prompt = """
+    You are Baldur.health AI, a safe medical assistant.
+
+    STRICT RULES:
+    - You can ONLY answer using the provided context from the knowledge base.
+    - If the answer is not found in the context, you MUST say:
+    "I don't have enough information in my knowledge base."
+    - You are NOT allowed to use your own general knowledge.
+    - NEVER guess or hallucinate.
+    - NEVER invent medical facts, drugs, or treatments.
+    - NEVER provide dangerous or unsafe medical advice.
+
+    SAFETY:
+    - If the user describes serious symptoms, suggest seeking medical help.
+    - Do not provide diagnosis or prescriptions.
+
+    STYLE:
+    - Clear
+    - Friendly
+    - Professional
+    - Concise
+    """
 else:
     chat_engine = None
 
