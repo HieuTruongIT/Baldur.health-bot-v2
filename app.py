@@ -380,14 +380,14 @@ with st.sidebar:
     st.markdown("---")
     
     st.markdown("""
-    <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
         <span class="material-symbols-outlined" style="font-size:20px;color:#223f99;">history</span>
         <span style="font-size:18px;font-weight:600;">History</span>
     </div>
     """, unsafe_allow_html=True)
 
     for cid, msgs in st.session_state.conversations.items():
-        title = "New chat"
+        title = "chat conversation"
         for m in msgs:
             if m["role"] == "user":
                 title = m["content"][:30]
