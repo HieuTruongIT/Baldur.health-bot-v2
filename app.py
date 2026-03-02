@@ -469,6 +469,7 @@ if index:
     - Professional
     - Concise
     """
+    )
 else:
     chat_engine = None
 
